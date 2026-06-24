@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #mydiv {
+            width: 200px;
+            height: 100px;
+            background-color: lightblue;
+        }
+        #input {
+            width: 200px;
+            height: 30px;
+        }
+            form {
+                margin-top: 20px;
+                max-width: 300px;
+
+            }
+            label {
+                display: block;
+                margin-bottom: 5px;
+            }
+       button {
+                margin-top: 10px;
+                padding: 5px 10px;
+                background-color: lightcoral;
+                border: none;
+                color: white;
+                cursor: pointer;
+            }
+            button:hover {
+                background-color: lightpink;
+            }
+    </style>
+</head>
+<body>
+    <h2>Mouse events</h2>
+    <br>
+    <div id="mydiv">
+    </div>
+    <br>
+    <h2>Keyboard events</h2>
+    <input type="text" id="input" placeholder="Type something...">
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+    <script>
+        //window events
+        window.addEventListener("load", () =>{
+            console.log("Page loaded!");
+        });
+        window.addEventListener("resize", () =>{
+            console.log("Window resized!");
+        });
+        window.addEventListener("scroll", () =>{
+            console.log("Window scrolled!");
+        });
+        window.addEventListener("beforeunload", (event) =>{
+            event.preventDefault();
+            event.returnValue = "";
+        });
+        window.addEventListener("DOMContentLoaded", () =>{
+            console.log("DOM content loaded!");
+        });
+        //mouse events
+        let box = document.getElementById("mydiv");
+        box.addEventListener("click", () =>{
+        box.style.backgroundColor = "lightcoral";
+        });
+        box.addEventListener("dblclick", () =>{
+        box.style.backgroundColor = "lightgreen";
+        box.innerText = "Double Clicked!";
+        });
+        box.addEventListener("mouseover", () =>{
+            box.style.backgroundColor = "lightyellow";
+        });
+        box.addEventListener("mouseout", () =>{
+            box.style.backgroundColor = "lightblue";
+        });
+        box.addEventListener("mousedown", () =>{
+            box.style.backgroundColor = "red";
+        });
+        box.addEventListener("mouseup", () =>{
+            box.style.backgroundColor = "lightblue";
+        });
+        box.addEventListener("mousemove", () =>{
+            box.style.backgroundColor = "lightgray";
+            alert("Mouse is moving!");
+            if (mouseEvent.buttons === 1) {
+                box.style.backgroundColor = "lightcoral";
+            }
+        });
+        box.addEventListener("contextmenu", (event) =>{
+            event.preventDefault();
+            box.style.backgroundColor = "lightpink";
+        });
+
+        //keyboard events
+        let input = document.querySelector("input");
+        input.addEventListener("keydown", (event) =>{
+            console.log(`Key down: ${event.key}`);
+        });
+        input.addEventListener("keyup", (event) =>{
+            console.log(`Key up: ${event.key}`);
+        });
+        input.addEventListener("keypress", (event) =>{
+            console.log(`Key press: ${event.key}`);
+        });
+        input.addEventListener("input", (event) =>{
+            console.log(`Input: ${event.target.value}`);
+        });
+        input.addEventListener("focus", () =>{
+            input.style.backgroundColor = "lightyellow";
+        });
+        // form submit event
+        let form = document.querySelector("form");
+        form.addEventListener("submit", (event) =>{
+            event.preventDefault();
+            alert("Form submitted!");
+        });
+        form.addEventListener("reset", () =>{
+            alert("Form reset!");
+        });
+        document.querySelector("input").addEventListener("blur", () =>{
+            alert("Input lost focus!");
+        });
+        document.querySelector("input").addEventListener("change", (event) =>{
+            console.log(`Input changed: ${event.target.value}`);
+        });
+        document.querySelector("input").addEventListener("select", (event) =>{
+            console.log(`Text selected: ${event.target.value.substring(event.target.selectionStart, event.target.selectionEnd)}`);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #cc2121;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        color: #2c3e90;
+    }
+
+    video {
+        display: block;
+        margin-top: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+</style>
+<body>
+    <h1>Video Example</h1>
+    <p>This is an example of a video element in HTML.</p>
+    <video width="320" height="240" controls autoplay loop muted poster="poster.jpg" playsinline muted >
+        <source src="video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</body>
+</html>
